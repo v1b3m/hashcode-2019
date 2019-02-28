@@ -1,19 +1,25 @@
-def read_file(filename):
-    with open(filename, 'r') as f:
-        photos = f.readline()
-        photos_dict = {}
+def read(file_name):
+    f = open(file_name)
 
-        for i in range(int(photos)):
-            line = f.readline()
-            orientation = line.split()[0]
-            num_tags = int(line.split()[1])
-            tags = []
-            for n in range(num_tags):
-                tags.append(line.split()[n+2])
-            photos_dict[i] = {"orientation": orientation,
-                                "tags": tags}
-        print(photos_dict)
-        return photos_dict
+    f1 = f.readlines()
+
+    pics = {}
+
+    number_of_photos = f1.pop(0)
+
+    counter = 0
+
+    for x in f1:
+        pic = {
+            "orientation": x[0],
+            "number_of_tags": int(x[2]),
+            "tags": list(x[4:-1].split(" "))
+        }
+        pics[counter] = pic
+        counter += 1
+
+    return pics
+
 
 def commom_elements():
     tags = read_file("filename")
@@ -21,5 +27,5 @@ def commom_elements():
         item = set(item)
 
 
-if __name__=='__main__':
-    read_file("filesin/a_example.txt")
+if __name__ == '__main__':
+    read("filesin/a_example.txt")
