@@ -1,5 +1,6 @@
 def read(file_name):
     """reading input files"""
+    
     f = open(file_name)
 
     f1 = f.readlines()
@@ -23,6 +24,7 @@ def read(file_name):
 
 
 def create_slides():
+    """function to create slideshow of the photos"""
     pics =  read("filesin/e_shiny_selfies.txt")
     slides = []
     vertical = []
