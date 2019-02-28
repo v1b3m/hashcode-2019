@@ -1,4 +1,5 @@
 def read(file_name):
+    """reading input files"""
     f = open(file_name)
 
     f1 = f.readlines()
